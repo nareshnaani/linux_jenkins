@@ -1,0 +1,64 @@
+
+
+Jenkins :::::::::::::
+--> Create bucket 
+--> create IAM 
+IAM :::
+
+Access key:
+AKIAIHCXL24BW52BQN3A
+Secreat key::
+paY9dFEAdepF8Oev517YfZPxJ87nM0jM9ju9sjG0
+
+-->create policies::
+amazonS3afull access
+amazonssmfull access
+
+and Attach it to user..
+
+Install the AWS Command Line Interface through the Ec2 Instance..
+Installation:::::::::::::::::::::::::
+Usefull Links :::
+
+https://wiki.jenkins.io/display/JENKINS/Installing+Jenkins+on+Red+Hat+distributions
+https://www.tecmint.com/fix-firewall-cmd-command-not-found-error/
+https://serverfault.com/questions/750001/cant-save-firewalld-rules-with-permanent
+
+
+Add the Jenkins repository to the yum repos, and install Jenkins from here.
+
+	sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
+	sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+	sudo yum install jenkins
+
+after that 
+
+Install firewalld 
+	sudo yum install firewalld
+	sudo systemctl start firewalld
+	sudo systemctl enable firewalld
+	sudo systemctl status firewalld
+	
+	firewall-cmd --permanent --service=jenkins --add-port=8080/tcp
+	firewall-cmd --permanent --add-service=jenkins
+	firewall-cmd --reload
+	
+	firewall-cmd --list-all
+	
+Start jenkins 
+
+	systemctl start jenkins
+	systemctl status jenkins
+
+Now goto url to use jenkins
+http://yourIP:8080
+	
+Password location 
+	cat /var/lib/jenkins/secrets/initialAdminPassword
+
+
+
+
+
+
+
